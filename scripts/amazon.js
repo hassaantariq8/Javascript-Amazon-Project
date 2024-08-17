@@ -24,7 +24,7 @@ products.forEach((products) => {
         </div>
 
         <div class="product-price">
-            $${(products.priceCents/100)}
+            $${(products.priceCents/100).toFixed(2)}
         </div>
 
         <div class="product-quantity-container">
@@ -78,8 +78,6 @@ document.querySelectorAll('.js-add-to-cart')
         const productId = button.dataset.productId;
         addToCart(productId)
         updateCartQuantity();
-       
-       
 
     }
     )
