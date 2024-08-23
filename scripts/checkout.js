@@ -16,9 +16,25 @@ import { loadProducts, loadProductsFetch } from '../data/products.js';
     }   
 )*/
    
+async function loadPage()
+{
+  console.log('load page');
+
+  await loadProductsFetch();
+
+  const value = await  new Promise((resolve) => {
+    loadCart(() => {
+    resolve('value 3');
+    });
+});
+
+    renderOrderSummary();
+    renderPaymentSummary();
+}
+loadPage()
 
 
-Promise.all([
+/*Promise.all([
     loadProductsFetch(),
     new Promise((resolve) => {
         loadCart(() => {
@@ -29,7 +45,7 @@ Promise.all([
   console.log(values);
   renderOrderSummary();
   renderPaymentSummary();
-});
+});*/
 
 
 /*
