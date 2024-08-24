@@ -18,16 +18,20 @@ import { loadProducts, loadProductsFetch } from '../data/products.js';
    
 async function loadPage()
 {
-  console.log('load page');
+    try{
+        await loadProductsFetch();
 
-  await loadProductsFetch();
+        const value = await  new Promise((resolve) => {
+            loadCart(() => {
+            resolve('value 3');
+            });
+        });
 
-  const value = await  new Promise((resolve) => {
-    loadCart(() => {
-    resolve('value 3');
-    });
-});
-
+    } catch (error)
+    {
+        console.log('Unexpected Error. Please try again!!')
+    }
+ 
     renderOrderSummary();
     renderPaymentSummary();
 }
